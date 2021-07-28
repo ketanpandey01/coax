@@ -1,0 +1,25 @@
+.mainHeader{
+  background-color: skyblue;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+.header{
+  /* background-color: greenyellow; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.headerMenu{
+  /* background-color: green; */
+}
+.title_logo{
+  /* background-color: silver; */
+  display: flex;
+  flex-direction: row;
+}
+.user_date{
+  /* background-color: silver; */
+  display: flex;
+  flex-direction: row;
+}
