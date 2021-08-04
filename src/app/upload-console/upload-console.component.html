@@ -1,0 +1,10 @@
+<p-fileUpload mode="basic" (onSelect)="onFileSelect($event)" ></p-fileUpload>
+
+<ag-grid-angular *ngIf="displayGrid"
+    style="height: 300px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs"
+    (gridReady)="onGridReady($event)"
+>
+</ag-grid-angular>
