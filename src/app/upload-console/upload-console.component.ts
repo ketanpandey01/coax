@@ -25,6 +25,12 @@ export class UploadConsoleComponent implements OnInit {
     // inputObj.click();
   }
 
+  ngAfterViewInit(){
+    var inputObj:any = document.querySelector("input[type='file']");
+    console.log(inputObj);
+    inputObj.click();
+  }
+
   onFileSelect(event: any) {
     // console.log('data event', event);
     if (event.currentFiles && event.currentFiles.length) {
