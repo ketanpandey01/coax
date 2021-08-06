@@ -11,6 +11,7 @@ export class UploadConsoleComponent implements OnInit {
   rowData: any = [];
   columnDefs: any = [];
   displayGrid: boolean = false;
+  selectedFile: any;
 
   rowData1 = [
     { make: 'Toyota', model: 'Celica', price: 35000 },
@@ -25,16 +26,20 @@ export class UploadConsoleComponent implements OnInit {
     // inputObj.click();
   }
 
-  ngAfterViewInit(){
-    var inputObj:any = document.querySelector("input[type='file']");
-    console.log(inputObj);
-    inputObj.click();
+  // ngAfterViewInit(){
+  //   var inputObj:any = document.querySelector("input[type='file']");
+  //   console.log(inputObj);
+  //   inputObj.click();
+  // }
+  onFileSelect(event: any){
+    if (event.target && event.target.files){
+      this.selectedFile = event.target.files[0];
+    }
   }
 
-  onFileSelect(event: any) {
+  uploadData() {
     // console.log('data event', event);
-    if (event.currentFiles && event.currentFiles.length) {
-      let selectedFile = event.currentFiles[0];
+    if (this.selectedFile) {
       // console.log('file', selectedFile);
       const fileReader = new FileReader();
       fileReader.onload = () => {
@@ -58,7 +63,7 @@ export class UploadConsoleComponent implements OnInit {
         this.formatRows(tempData);
         // console.log(this.rowData);
       };
-      fileReader.readAsText(selectedFile, 'UTF-8');
+      fileReader.readAsText(this.selectedFile, 'UTF-8');
     }
   }
 
@@ -90,6 +95,8 @@ export class UploadConsoleComponent implements OnInit {
     console.log("rowSkeleton", this.rowData);
     this.displayGrid = true;
   }
+
+
 
 //   setHeaderNames() {
 //     console.log("grid api", this.gridApi)

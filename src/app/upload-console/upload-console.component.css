@@ -2,3 +2,8 @@
   /* visibility: hidden; */
   display: none;
 }
+
+.file-upload{
+  display: grid;
+  place-items: center;
+}
