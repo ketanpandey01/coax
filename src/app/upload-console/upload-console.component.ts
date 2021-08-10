@@ -34,6 +34,7 @@ export class UploadConsoleComponent implements OnInit {
   onFileSelect(event: any){
     if (event.target && event.target.files){
       this.selectedFile = event.target.files[0];
+      console.log('selectedFile', this.selectedFile);
     }
   }
 

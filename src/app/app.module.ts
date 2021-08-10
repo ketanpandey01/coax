@@ -10,13 +10,18 @@ import {ButtonModule} from 'primeng/button';
 import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
+import { MonitoringComponent } from './monitoring/monitoring.component';
+import {ChartModule} from 'primeng/chart';
+import {PanelModule} from 'primeng/panel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    UploadConsoleComponent
+    UploadConsoleComponent,
+    MonitoringComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +30,9 @@ import { AgGridModule } from 'ag-grid-angular';
     ButtonModule,
     FileUploadModule,
     HttpClientModule,
+    ChartModule,
+    PanelModule,
+    BrowserAnimationsModule,
     AgGridModule.withComponents([])
   ],
   providers: [],

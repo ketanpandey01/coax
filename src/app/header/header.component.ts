@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {MenuItem} from 'primeng/api';
 export class HeaderComponent implements OnInit {
   items: MenuItem[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.items = [
@@ -48,11 +49,9 @@ export class HeaderComponent implements OnInit {
       },
       {
         label:'Monitoring',
-        items:[
-            {
-                label:'Edit'
-            }
-        ]
+        command: () => {
+          this.router.navigateByUrl('/monitoring');
+        }
     },
   ];
   }
