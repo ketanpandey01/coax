@@ -17,6 +17,8 @@ export class MonitoringComponent implements OnInit {
         {
           label: 'First Dataset',
           data: [65, 59, 80, 81, 56, 55, 40],
+          backgroundColor: 'rgba(255,0,0,0.2)',
+          borderColor: 'red'
         },
       ],
     };

@@ -7,7 +7,7 @@
       accept=".csv"
       (change)="onFileSelect($event)"
     />
-    <button pButton type="button" [disabled]="selectedFile != null ? 'false' : 'true'" label="Upload" (click)="uploadData()"></button>
+    <button pButton type="button"  label="Upload" (click)="uploadExcel()"></button>
   </div>
 
   <div class="grid">
