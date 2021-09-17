@@ -1,24 +1,14 @@
 <!-- <p-fileUpload class="uploadInput"  mode="basic"  (onSelect)="onFileSelect($event)" ></p-fileUpload> -->
 <div>
   <div class="file-upload">
-    <input
-      type="file"
-      id="fileUpload"
-      accept=".csv"
-      (change)="onFileSelect($event)"
-    />
-    <button pButton type="button"  label="Upload" (click)="uploadExcel()"></button>
+    <input type="file" id="fileUpload" accept=".csv" (change)="onFileSelect($event)" />
+    <button pButton type="button" [disabled]="selectedFile != null ? 'false' : 'true'" label="Upload"
+      (click)="uploadExcel()"></button>
   </div>
 
   <div class="grid">
-    <ag-grid-angular
-      *ngIf="displayGrid"
-      style="height: 300px"
-      class="ag-theme-alpine"
-      [rowData]="rowData"
-      [columnDefs]="columnDefs"
-      (gridReady)="onGridReady($event)"
-    >
+    <ag-grid-angular *ngIf="displayGrid" style="height: 300px" class="ag-theme-alpine" [rowData]="rowData"
+      [columnDefs]="columnDefs" (gridReady)="onGridReady($event)">
     </ag-grid-angular>
   </div>
 </div>

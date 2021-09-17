@@ -7,3 +7,7 @@
   display: grid;
   place-items: center;
 }
+
+:host::ng-deep .ag-header-group-cell-label{
+  justify-content: center;
+}

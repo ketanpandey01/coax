@@ -13,7 +13,7 @@ describe('UploadConsoleComponent', () => {
     .compileComponents();
   });
 
-  beforeEach(() => {
+  beforeEach(async () => {
     fixture = TestBed.createComponent(UploadConsoleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,5 +21,16 @@ describe('UploadConsoleComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should call onUploadFile when input is changed for required files', () => {
+    spyOn(component, 'onFileSelect').and.callThrough();
+
+    const mockFile = new File([''], 'filename', { type: 'text/html' });
+    const mockEvt = { target: { files: [mockFile] } };
+    component.onFileSelect(mockEvt);
+
+    expect(component.onFileSelect).toHaveBeenCalledWith(mockEvt);
+    expect(component.selectedFile).toBeDefined();
   });
 });

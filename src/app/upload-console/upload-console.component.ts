@@ -12,11 +12,10 @@ export class UploadConsoleComponent implements OnInit {
   columnDefs: any = [];
   displayGrid: boolean = false;
   selectedFile: any;
+  defaultColDef:any;
 
   rowData1 = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
+    {"event1":34234,"event2":23,"event3":234234,"event4":2008,"price1":6577,"price2":4454,"price3":8,"price4":87687,"price5":2323,"price6":8}
   ];
 
   constructor() {}
@@ -24,6 +23,100 @@ export class UploadConsoleComponent implements OnInit {
   ngOnInit(): void {
     // var inputObj:any = document.querySelector("input[type='file']");
     // inputObj.click();
+    this.displayGrid=true;
+    this.columnDefs = [
+      {
+        headerName: 'Event',
+        children: [
+          {
+            headerName: 'event1',
+            field: 'event1',
+            width: 180,
+          },
+          {
+            headerName: 'event2',
+            field: 'event2',
+            width: 90
+          },
+          {
+            headerName: 'event3',
+            field: 'event3',
+            width: 140,
+          },
+          {
+            headerName: 'event4',
+            field: 'event4',
+            width: 140,
+          }
+        ],
+      },
+      {
+        headerName: 'Old Price',
+        children: [
+          {
+            headerName: 'price1',
+            field: 'price1',
+            width: 180,
+          },
+          {
+            headerName: 'price2',
+            field: 'price2',
+            width: 90
+          },
+          {
+            headerName: 'price3',
+            field: 'price3',
+            width: 140,
+          },
+          {
+            headerName: 'price4',
+            field: 'price4',
+            width: 140,
+          },
+          {
+            headerName: 'price5',
+            field: 'price5',
+            width: 140,
+          },
+          {
+            headerName: 'price6',
+            field: 'price6',
+            width: 140,
+          }
+        ],
+      },
+      {
+        headerName: 'New Price',
+        children: [
+          {
+            headerName: 'price1',
+            field: 'newprice1',
+            width: 180,
+          },
+          {
+            headerName: 'price2',
+            field: 'newprice2',
+            width: 90
+          },
+          {
+            headerName: 'price3',
+            field: 'newprice3',
+            width: 140,
+          },
+          {
+            headerName: 'price4',
+            field: 'newprice4',
+            width: 140,
+          }
+        ],
+      }
+    ];
+
+    this.defaultColDef = {
+      sortable: true,
+      resizable: true,
+      filter: true,
+    };
   }
 
   // ngAfterViewInit(){
@@ -32,6 +125,7 @@ export class UploadConsoleComponent implements OnInit {
   //   inputObj.click();
   // }
   onFileSelect(event: any) {
+    console.log('events',event);
     if (event.target && event.target.files) {
       this.selectedFile = event.target.files[0];
       console.log('selectedFile', this.selectedFile);
@@ -105,10 +199,12 @@ export class UploadConsoleComponent implements OnInit {
       /* selected the first sheet */
       const wsname: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-
+      console.log('ws',ws);
       /* save data */
-      const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log(data); // Data will be logged in array format containing objects
+      const data = XLSX.utils.sheet_to_json(ws, {header: 1}); // to get 2d array pass 2nd parameter as object {header: 1}
+      console.log("json",data);
+      console.log(JSON.stringify(data[0]));
+      console.log("json2",XLSX.utils.sheet_to_json(ws, {header: 1}));  // Data will be logged in array format containing objects
     };
  }
 
