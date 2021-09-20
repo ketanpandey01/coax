@@ -1,5 +1,7 @@
 <!-- <p-fileUpload class="uploadInput"  mode="basic"  (onSelect)="onFileSelect($event)" ></p-fileUpload> -->
 <div>
+  <button pButton type="button"  label="downloadPdf"
+      (click)="uploadExcel()"></button>
   <div class="file-upload">
     <input type="file" id="fileUpload" accept=".csv" (change)="onFileSelect($event)" />
     <button pButton type="button" [disabled]="selectedFile != null ? 'false' : 'true'" label="Upload"
